@@ -1,0 +1,17 @@
+{% extends "MainApp/base.html" %}
+
+{% block page_header %}
+    <h3>{{ pizza }}</h3>
+{% endblock page_header %}
+
+{% block content %}
+    {% for t in toppings %}
+        <div class="card mb-3">
+            <div class="card-body">
+                {{ t }}
+            </div>
+        </div>
+    {% empty %}
+        <p>There are no toppings for this pizza</p>
+    {% endfor %}
+{% endblock content %}
