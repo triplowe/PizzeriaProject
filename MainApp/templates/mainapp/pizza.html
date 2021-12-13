@@ -5,6 +5,7 @@
 {% endblock page_header %}
 
 {% block content %}
+    <p>Toppings: </p>
     {% for t in toppings %}
         <div class="card mb-3">
             <div class="card-body">
@@ -14,4 +15,27 @@
     {% empty %}
         <p>There are no toppings for this pizza</p>
     {% endfor %}
+  
+    {% for i in image %}
+        <div class="col-md-4">
+                <img src="{{  i.image.url  }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+        </div>
+    {% empty %}
+        <p>There is no image for this pizza</p>
+    {% endfor %}   
+
+    <p>Comments: </p>
+
+    {% for c in comments %}
+        <div class="card mb-3">
+            <div class="card-body">
+                {{ c|linebreaks }}
+            </div>
+        </div>
+    {% empty %}
+        <p>There are no comments for this pizza</p>
+    {% endfor %}
+
+    <p></p><a href="{% url 'MainApp:comment' pizza.id %}">Add a new comment</a></p>
+
 {% endblock content %}
